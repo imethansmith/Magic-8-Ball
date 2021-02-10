@@ -11,11 +11,18 @@ import UIKit
 class ViewController: UIViewController {
     
     let ballArray = [#imageLiteral(resourceName: "ball1.png"),#imageLiteral(resourceName: "ball2.png"),#imageLiteral(resourceName: "ball3.png"),#imageLiteral(resourceName: "ball4.png"),#imageLiteral(resourceName: "ball5.png")]
-
+    var currentNumber = 0
+    
     @IBOutlet weak var magicEightBallView: UIImageView!
     
     @IBAction func triggerEightBall(_ sender: Any) {
-        magicEightBallView.image = ballArray[Int.random(in: 0 ..< 5)]
+        var tempNumber = Int.random(in: 0 ..< 5)
+        while tempNumber == currentNumber {
+            tempNumber = Int.random(in: 0 ..< 5)
+        }
+        currentNumber = tempNumber
+        
+        magicEightBallView.image = ballArray[currentNumber]
     }
     
 }
